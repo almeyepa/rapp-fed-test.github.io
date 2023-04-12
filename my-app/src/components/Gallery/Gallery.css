@@ -1,0 +1,7 @@
+/* Gallery ---- */
+.row#gallery.background-color {
+    background-image: linear-gradient(0deg, var(--white), var(--primary));
+}
+.row#gallery .column {
+    padding: 0;
+}

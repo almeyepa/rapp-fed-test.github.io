@@ -1,0 +1,10 @@
+/* Benefits ---- */
+.row.benefits .card:first-child {
+    background-color: var(--primaryTxt);
+}
+.row.benefits .card:nth-child(2) {
+    background-color: var(--primary);
+}
+.row.benefits .card:last-child {
+    background-color: var(--secondary);
+}

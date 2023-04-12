@@ -1,0 +1,16 @@
+/* Reviews top ---- */
+.row#reviews.background-color.top {
+    background-image: none;
+    background-color: var(--primaryTxt);
+}
+.row#reviews i {
+    font-size: var(--fontSize--5);
+    color: var(--reviews);
+    margin-bottom: 2rem;
+}
+
+/* Reviews bottom ---- */
+.row.reviews p.name {
+    font-style: italic;
+    font-weight: 500;
+}

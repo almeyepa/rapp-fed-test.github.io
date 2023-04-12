@@ -1,0 +1,381 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'MarkOT', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* Colors ---- */
+    --primary: #85C5B9;
+    --secondary: #F09291;
+    --btnWhite: hsla(0, 0%, 100%, 0.8);
+    --white: #FBFBFB;
+    --white-smoke: #F0F2F2;
+    --black: #222222;
+    --primaryTxt: #47929C;
+    --text: #333333;
+    --overlay: hsla(0, 0%, 0%, 0.4);
+    --underline: hsla(0, 0%, 0%, 0.075);
+    --bg-scroll-thumb: var(--primary);
+    --bg-scroll-track: var(--primaryTxt);
+    --reviews: rgb(232, 174, 95);
+    /* font sizes ---- */
+    --fontSize--00: 0.75em;
+    --fontSize--0: 0.85em;
+    --fontSize: 1em;
+    --fontSize--1: clamp(1.0625em, calc(.2vw + 1em), 1.125em);
+    --fontSize--2: clamp(1.125em, calc(.5vw + 1em), 1.25em);
+    --fontSize--3: clamp(1.25em, calc(1vw + 1em), 1.5em);
+    --fontSize--4: clamp(1.375em, calc(1.5vw + 1em), 1.75em);
+    --fontSize--5: clamp(1.5em, calc(2vw + 1em), 2em);
+    --fontSize--6: clamp(1.625em, calc(2.1vw + 1em), 2.25em);
+    --fontSize--7: clamp(1.75em, calc(2.2vw + 1em), 2.5em);
+    --fontSize--8: clamp(1.875em, calc(2.4vw + 1em), 2.75em);
+    --fontSize--9: clamp(2em, calc(2.6vw + 1em), 3.125em);
+    --fontSize--10: clamp(2.125em, calc(2.8vw + 1em), 3.375em);
+    --fontSize--11: clamp(2.25em, calc(3vw + 1em), 3.625em);
+    --fontSize--12: clamp(2.375em, calc(3.2vw + 1em), 3.875em);
+    --fontSize--custom: clamp(3.25em, calc(6.1vw + 1em), 5.125em);
+    /* Border radius ---- */
+    --btn-br: 8px;
+    --panel-br: 20px;
+    /* Transitions ---- */
+    --transition: all 0.3s ease-out;
+    --transition2: all 0.5s ease-out;
+    /* Animations ---- */
+    --animation-slide: slide 10s linear infinite;
+}
+
+/* Font family ---- */
+@font-face {
+    font-family: 'MarkOT';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(../public/Fonts/MarkOT-Thin.otf) format('truetype');
+}
+@font-face {
+    font-family: 'MarkOT';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../public/Fonts/MarkOT.otf) format('truetype');
+}
+@font-face {
+    font-family: 'MarkOT';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(../public/Fonts/MarkOT-Book.otf) format('truetype');
+}
+@font-face {
+    font-family: 'MarkOT';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(../public/Fonts/MarkOT-Bold.otf) format('truetype');
+}
+
+/* Selection ---- */
+::selection {
+    background: var(--primaryTxt);
+    color: var(--white);
+}
+
+/* Scroll bar ---- */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 1.5em;
+    background: var(--bg-scroll-thumb);
+    background-clip: padding-box;
+    border: 3px solid transparent;
+    box-shadow: none;
+    min-height: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+    border: 0px solid transparent;
+}
+::-webkit-scrollbar-track {
+    border-radius: 0;
+    background: var(--bg-scroll-track);
+    border: none;
+}
+
+/* Keyframes ---- */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-100px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Row & Column default ---- */
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Full width ---- */
+.row.full-width {    
+    position: relative;
+    overflow: hidden;
+    padding: 4em 0;
+}
+.row.full-width~.row:not(.full-width) {
+    padding-top: 0;
+}
+.row.full-width~.row.reverse {
+    padding-top: 4em;
+}
+.row.full-width.top {
+    padding: 4em 2em 0;
+}
+.row.full-width.bottom {
+    padding: 0 2em 4em;
+}
+.full-width .block-text {
+    text-align: center;
+}
+.full-width .block-text p strong {    
+    font-size: var(--fontSize--2);
+    display: block;
+    margin-top: 0.5em;
+}
+
+/* Background color ---- */
+.row.background-color {
+    background-image: linear-gradient(0deg, var(--primary), var(--primaryTxt));
+    color: var(--white);
+}
+.background-color .block-text h2, .background-color .block-text p {
+    color: var(--white);
+}
+
+/* Headings ---- */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+    font-weight: 600;
+    margin-block-end: 2rem;
+}
+h1 {
+    font-size: var(--fontSize--12);
+}
+h2 {
+    font-size: var(--fontSize--9);
+    color: var(--primaryTxt);
+}
+h3 {
+    font-size: var(--fontSize--5);
+}
+h4 {
+    font-size: var(--fontSize--4);    
+    text-align: center;
+    color: var(--primaryTxt);
+}
+h5 {
+    font-size: var(--fontSize--3);
+}
+h6 {
+    font-size: var(--fontSize--2);
+    color: var(--primaryTxt);
+}
+
+/* Buttons ----- */
+.btn {
+    padding: 0.5rem;
+    white-space: nowrap;
+    outline: none;
+    border: none;
+    border-radius: var(--btn-br);
+    font-size: var(--fontSize);
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: var(--btnWhite);
+    color: var(--primaryTxt);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-text {
+    margin: 0 auto;
+    width: 95%;
+}
+
+.btn-primary {
+    background-color: var(--btnWhite);
+    color: var(--primaryTxt);
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.btn-medium {
+    font-size: var(--fontSize--0);
+}
+
+.btn-large {
+    padding: 0.75rem 1rem;
+    font-size: var(--fontSize--1);
+}
+
+.btn-question {
+    background: transparent;
+    border-color: transparent;
+    font-size: var(--fontSize);
+    color: var(--overlay);
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.btn-medium:hover, .btn-large:hover {
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+@media only screen and (min-width: 750px) {
+    .btn-text {
+        width: 20em;
+    }
+}
+
+/* p, ul li ---- */
+p, ol li {
+    font-weight: 400;
+    color: var(--text);
+    font-size: var(--fontSize--1);
+    line-height: 1.5;
+}
+
+p {
+    margin: 0 0 2rem;
+}
+
+ol {
+    margin: 0 0 2rem 1rem;
+    list-style-type: upper-alpha;
+}
+
+ol li {
+    margin-left: 1rem;
+}
+
+ol li::marker {
+    font-weight: 600;
+    font-size: var(--fontSize--2);
+    color: var(--primaryTxt);
+}
+
+/* blockquote ---- */
+blockquote {
+    font-size: var(--fontSize--3);
+    margin: 0 0 1rem;
+    color: var(--primaryTxt);
+}
+
+blockquote p {
+    font-weight: 600;
+}
+
+/* Images ---- */
+.block-image img {
+    border-radius: var(--panel-br);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.block-image .desktop {
+    display: none;
+}
+
+/* Cards ---- */
+.row.cards {
+    gap: 2em;
+    padding: 0 2em 2em;
+}
+.column.card, .card {
+    border-radius: var(--panel-br);
+    padding: 2em;
+    background-color: var(--overlay);
+}
+.card .block-text {
+    text-align: left;
+}
+.card p, .card i {
+    color: var(--white);
+}
+.card i {    
+    font-size: var(--fontSize--5);
+    margin: 2rem 0 1rem;
+}
+.reviews .card i {
+    font-size: var(--fontSize--1);
+    color: var(--reviews);
+}
+
+@media only screen and (min-width: 1200px) {
+    /* Row & column ---- */
+    .row {
+        flex-direction: row;
+    }
+    .row.reverse {
+        flex-direction: row-reverse;
+        background-color: var(--white-smoke);
+    }
+    /* Full width ---- */
+    .row.full-width~.row.reverse {
+        padding-top: 0;
+    }
+
+    .column {
+        padding: 0;
+        margin: 0 auto;
+    }
+    .column.broad {
+        max-width: 80em;
+    }
+    .column.tight {
+        max-width: 60em;
+    }
+
+    /* Images ---- */
+    .block-image .mobile {
+        display: none;
+    }
+    .block-image .desktop {
+        display: block;
+    }
+    .block-image img {
+        border-radius: 0;
+    }
+
+    /* Text ---- */
+    .block-text {
+        padding: 0 5rem;
+    }
+    .card .block-text {
+        padding: 0 2em;
+    }
+}

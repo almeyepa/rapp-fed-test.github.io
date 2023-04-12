@@ -1,0 +1,18 @@
+footer {
+    background-color: var(--primary);
+    height: 6em;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+footer p.copyright {
+    font-size: var(--fontSize--00);
+    color: var(--white);
+    margin-bottom: 0;
+}
